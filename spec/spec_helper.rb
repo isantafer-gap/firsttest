@@ -15,15 +15,15 @@ Capybara.register_driver :selenium_firefox do |app|
   Capybara::Selenium::Driver.new(app, :browser => :firefox) 
 end
 
-Capybara.default_driver = :selenium
-Capybara.javascript_driver = :selenium
+Capybara.default_driver = :selenium_firefox
+Capybara.javascript_driver = :selenium_firefox
 Capybara.run_server = false
 Capybara.app_host = 'https://www.google.com/'
 Capybara.default_max_wait_time = 60
 
 RSpec.configure do |config|
   
-  config.include Capybara::DSL :type => :feature
+  config.include Capybara::DSL, :type => :feature
   require 'rspec/expectations'
   config.include RSpec::Matchers
 end
