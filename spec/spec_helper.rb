@@ -8,11 +8,13 @@ require 'capybara/rspec'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome) 
+  Selenium::WebDriver::Chrome.driver_path = '/home/isantacruz/Documents/Drivers/chromedriver'
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
 Capybara.register_driver :selenium_firefox do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :firefox) 
+  Selenium::WebDriver::Firefox.driver_path = "/home/isantacruz/Documents/Drivers/geckodriver"
+  Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
 end
 
 Capybara.default_driver = :selenium_firefox
