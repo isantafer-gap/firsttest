@@ -7,6 +7,6 @@ feature "Demo Fasttrack", :js => true do
   scenario "Scenario FT" do
     visit('/')
     fill_in('lst-ib', :with => hi)
-    sleep(15)
+    sleep(3)
   end
 end
